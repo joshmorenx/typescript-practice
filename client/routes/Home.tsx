@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import React from 'react'
+import {useEffect} from 'react'
 import useGreeting from '../hooks/useGreeting';
 
 const Home:React.FC = () => {
     const {message, sendRequest} = useGreeting();
 
-    function showGreeting(){
+    function showGreeting():void{
         sendRequest();
     }
 
@@ -13,7 +14,9 @@ const Home:React.FC = () => {
     },[])
 
     return(
-        <>
+        <>  
+            <input type="text" />
+            <button>Show greeting</button>
             <h1>{message}!</h1>
         </>
     )
