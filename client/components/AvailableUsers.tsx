@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Box } from "@mui/material";
+import { Avatar } from '@mui/material';
 
 const AvailableUsers: React.FC = () => {
-    const dummyUsers = [
+    const dummyUsers:{ name: string; id: string }[] = [
         { name: "user1", id: "1" },
         { name: "user2", id: "2" },
         { name: "user3", id: "3" },
@@ -42,15 +43,22 @@ const AvailableUsers: React.FC = () => {
     };
 
     return (
-        <Box sx={{ cursor: "pointer", border: "1px solid black", width: "35%", overflowY: 'auto' }}>
+        <Box sx={{ border: "1px solid black", width: "35%", overflowY: 'auto' }}>
             {dummyUsers.map((user) => (
-                <div
+                <Box
                     key={user.id}
                     onClick={() => handleClick(user.id)}
                     className={selectedUserId === user.id ? "active" : ""}
                 >
-                    {user.name}
-                </div>
+                    <Box sx={{ cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-around" }}>
+                        <Box sx={{ display: "flex", alignItems: "center" }}>
+                            <Avatar>H</Avatar>
+                        </Box>
+                        <Box>
+                            {user.name}
+                        </Box>
+                    </Box>
+                </Box>
             ))}
         </Box>
     );
